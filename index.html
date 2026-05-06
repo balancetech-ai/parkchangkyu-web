@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박창규 | 한국난원 대표</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green:       #2d6a4f;
+            --green-dark:  #1b4332;
+            --green-light: #e8f5ee;
+            --text:        #1a2e1a;
+            --muted:       #666;
+            --bg:          #f2f6f3;
+            --white:       #ffffff;
+            --border:      #d8e8dd;
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* ── HERO ─────────────────────────────────── */
+        .hero {
+            background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 55%, #40916c 100%);
+            color: #fff;
+            padding: 36px 20px 28px;
+            text-align: center;
+        }
+        .hero-photo {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.35);
+            object-fit: cover;
+            background: rgba(255,255,255,0.12);
+            margin-bottom: 14px;
+            display: block;
+            margin-left: auto; margin-right: auto;
+        }
+        .hero-fallback {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.15);
+            margin: 0 auto 14px;
+            font-size: 52px;
+            line-height: 110px;
+        }
+        .hero h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+        .hero-sub { font-size: 14px; opacity: .85; margin-bottom: 12px; }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 13px; font-weight: 600;
+        }
+
+        /* ── CONTACT BAR ───────────────────────────── */
+        .cbar {
+            display: flex;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+        .cbar a {
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            padding: 13px 6px; text-decoration: none;
+            color: var(--green); font-size: 12px; font-weight: 600;
+            border-right: 1px solid var(--border);
+            transition: background .15s;
+        }
+        .cbar a:last-child { border-right: none; }
+        .cbar a:active { background: var(--green-light); }
+        .cbar a .ci { font-size: 20px; margin-bottom: 3px; }
+
+        /* ── SECTION ───────────────────────────────── */
+        .sec {
+            background: var(--white);
+            margin: 8px 0;
+            padding: 20px;
+        }
+        .sec-title {
+            font-size: 16px; font-weight: 700;
+            color: var(--green);
+            border-left: 3px solid var(--green);
+            padding-left: 10px;
+            margin-bottom: 16px;
+        }
+
+        /* ── INFO GRID ─────────────────────────────── */
+        .info-grid { display: grid; gap: 8px; }
+        .info-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 10px 12px;
+            background: var(--green-light);
+            border-radius: 8px;
+        }
+        .info-row .lbl { font-size: 12px; color: var(--muted); min-width: 64px; font-weight: 500; padding-top: 1px; }
+        .info-row .val { font-size: 14px; font-weight: 600; }
+
+        /* ── CAREER ────────────────────────────────── */
+        .career-list { list-style: none; }
+        .career-list li {
+            display: flex; gap: 8px; align-items: flex-start;
+            padding: 10px 0; border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+        .career-list li:last-child { border-bottom: none; }
+        .career-list li::before { content: '▸'; color: var(--green); font-size: 11px; margin-top: 3px; flex-shrink: 0; }
+
+        /* ── HIGHLIGHT CARD ────────────────────────── */
+        .highlight-card {
+            background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+            border-radius: 12px;
+            padding: 20px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .highlight-card .hc-icon { font-size: 32px; margin-bottom: 8px; }
+        .highlight-card .hc-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+        .highlight-card .hc-desc { font-size: 13px; opacity: .88; line-height: 1.6; }
+
+        /* ── BUSINESS INFO ─────────────────────────── */
+        .biz-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 10px;
+        }
+        .biz-card .biz-name { font-size: 15px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+        .biz-card .biz-row { font-size: 13px; color: #444; padding: 4px 0; display: flex; gap: 8px; }
+        .biz-card .biz-lbl { color: var(--muted); min-width: 44px; flex-shrink: 0; }
+
+        /* ── ARTICLE CARDS ─────────────────────────── */
+        .article-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .article-card:last-child { margin-bottom: 0; }
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .article-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--green);
+            background: var(--green-light);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .article-date { font-size: 11px; color: var(--muted); }
+        .article-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.45;
+        }
+        .article-desc {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.65;
+        }
+        .article-link {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 2px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--green);
+            text-decoration: none;
+            border: 1px solid var(--green);
+            border-radius: 6px;
+            padding: 3px 12px;
+            transition: background .15s, color .15s;
+        }
+        .article-link:active { background: var(--green); color: #fff; }
+
+        /* ── FOOTER ────────────────────────────────── */
+        .footer {
+            text-align: center; padding: 24px;
+            font-size: 12px; color: var(--muted);
+            background: var(--white); border-top: 1px solid var(--border);
+        }
+        .footer p + p { margin-top: 4px; }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ─────────────────────────── -->
+<header class="hero">
+    <div id="heroFallback" class="hero-fallback">🌿</div>
+    <h1>박창규</h1>
+    <p class="hero-sub">한국난원 대표 &middot; 우정산악회</p>
+    <span class="badge">경희대학교 정치외교학과</span>
+</header>
+
+<!-- ── CONTACT BAR ──────────────────── -->
+<div class="cbar">
+    <a href="tel:02-3477-7171"><span class="ci">📞</span>전화</a>
+    <a href="https://naver.com/maps/@37.468,127.041" target="_blank"><span class="ci">📍</span>위치</a>
+    <a href="mailto:nankorea33@naver.com"><span class="ci">✉️</span>이메일</a>
+</div>
+
+<!-- ── 기본 정보 ─────────────────────── -->
+<section class="sec">
+    <h2 class="sec-title">기본 정보</h2>
+    <div class="info-grid">
+        <div class="info-row"><span class="lbl">생년</span><span class="val">1948년생</span></div>
+        <div class="info-row"><span class="lbl">학력</span><span class="val">경희대학교 정치외교학과</span></div>
+        <div class="info-row"><span class="lbl">현직</span><span class="val">한국난원 대표</span></div>
+        <div class="info-row"><span class="lbl">주소</span><span class="val">서울 서초구 양재동화훼공판장 나동 112호</span></div>
+        <div class="info-row"><span class="lbl">산악활동</span><span class="val">우정산악회 · 인수봉 개척</span></div>
+    </div>
+</section>
+
+<!-- ── 인수봉 개척 ─────────────────── -->
+<section class="sec">
+    <h2 class="sec-title">인수봉 개척</h2>
+    <div class="highlight-card">
+        <div class="hc-icon">⛰️</div>
+        <div class="hc-title">북한산 인수봉 루트 개척</div>
+        <div class="hc-desc">우정산악회 소속으로 북한산 인수봉(810m)의 암벽 등반 루트를 개척하였습니다. 인수봉은 국내 암벽등반의 성지로, 루트 개척은 한국 등산사에 남는 족적입니다.</div>
+    </div>
+    <ul class="career-list">
+        <li>우정산악회 소속 암벽등반 활동</li>
+        <li>북한산 인수봉 루트 개척</li>
+        <li>국내 암벽등반 문화 발전에 기여</li>
+    </ul>
+</section>
+
+<!-- ── 한국난원 ───────────────────── -->
+<section class="sec">
+    <h2 class="sec-title">한국난원</h2>
+    <div class="biz-card">
+        <div class="biz-name">🌸 한국난원 (韓國蘭園)</div>
+        <div class="biz-row"><span class="biz-lbl">대표</span>박창규</div>
+        <div class="biz-row"><span class="biz-lbl">전화</span>02-3477-7171</div>
+        <div class="biz-row"><span class="biz-lbl">위치</span>서울 서초구 양재동화훼공판장 나동 112호</div>
+        <div class="biz-row"><span class="biz-lbl">사업</span>기업 꽃배달 서비스</div>
+        <div class="biz-row"><span class="biz-lbl">납품처</span>삼성그룹, 한국후지제록스 등 주요 기업</div>
+    </div>
+    <p style="font-size:13px; color:#444; line-height:1.7;">
+        양재동화훼공판장에 위치한 한국난원은 국내 주요 기업을 대상으로 고품질 꽃배달 서비스를 제공합니다.
+        난(蘭)에 대한 깊은 조예와 오랜 경험을 바탕으로 전국 기업 고객에게 신뢰받는 화훼 전문 업체입니다.
+    </p>
+</section>
+
+<!-- ── 주요 경력 ─────────────────────── -->
+<section class="sec">
+    <h2 class="sec-title">주요 경력</h2>
+    <ul class="career-list">
+        <li>한국난원 대표 (현)</li>
+        <li>우정산악회 · 북한산 인수봉 루트 개척</li>
+        <li>경희대학교 정치외교학과 졸업</li>
+        <li>양재동화훼공판장 입점 화훼 전문 사업 운영</li>
+    </ul>
+</section>
+
+<!-- ── 관련 기사 · 뉴스 ───────────────── -->
+<section class="sec">
+    <h2 class="sec-title">관련 기사 · 뉴스</h2>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">산악 · 피플</span>
+            <span class="article-date">2011.10.17 · 월간산</span>
+        </div>
+        <div class="article-title">[피플] 네팔로 떠나는 히말라야사진작가클럽 박창규 회장</div>
+        <div class="article-desc">히말라야 14좌 사진전을 목표로 에베레스트 베이스캠프로 출발한 박창규 회장. 형 박정규 교수가 1965년 창립한 우정산악회에서 고교 시절부터 암벽을 시작해 인수봉·선인봉·오봉 등 수십 개 루트를 개척한 산악인의 새로운 도전기를 담았다.</div>
+        <a class="article-link" href="https://san.chosun.com/news/articleView.html?idxno=6411" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">루트 개척</span>
+            <span class="article-date">2014.09.25 · bnt뉴스</span>
+        </div>
+        <div class="article-title">한국의 바윗길을 가다(42) 인수봉 우정B길(형제길) — 뜨거운 형제애 그리고 비와 바람이 빚은 길</div>
+        <div class="article-desc">박정규·박창규 형제가 악천후를 뚫고 개척한 인수봉 우정B길. 박창규 씨가 직접 쓴 개척기를 토대로 형제간의 열정으로 탄생한 이 루트가 오늘날 산악 입문자들의 졸업 등반 코스가 된 이야기를 담았다.</div>
+        <a class="article-link" href="https://www.bntnews.co.kr/article/view/bnt201209260076" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">루트 개척</span>
+            <span class="article-date">2014.09.25 · bnt뉴스</span>
+        </div>
+        <div class="article-title">한국의 바윗길을 가다(14) 인수봉 하늘길 — 거친 호흡과 오름짓, 하늘을 향해 쏴라</div>
+        <div class="article-desc">1969년 9월 우정산악회의 박창규·장경린·강영택 등이 개척한 인수봉 하늘길. 난이도 5.10c의 7피치 크랙 루트로 '노가다길'로도 불리는 이 루트의 역사와 등반 과정을 소개한다.</div>
+        <a class="article-link" href="https://www.bntnews.co.kr/article/view/bnt201104050070" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">산악 역사</span>
+            <span class="article-date">2023.12.26 · 루트파인더스</span>
+        </div>
+        <div class="article-title">1965년 우정산악회, 뜨거웠던 우정의 흔적들</div>
+        <div class="article-desc">1965년 박정규 교수가 창립하고 박창규 대표가 활동한 우정산악회의 역사를 조명한다. 1969~1993년 발행된 회보 '우정의 메아리', 기념 패치, 개척 루트 자료 등 귀한 아카이브를 통해 한국 암벽등반 황금기의 현장을 되살렸다.</div>
+        <a class="article-link" href="https://www.routefinders.co.kr/news/articleView.html?idxno=3570" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">농업 · 건강</span>
+            <span class="article-date">2013.11.28 · 경희대 총동문회</span>
+        </div>
+        <div class="article-title">박창규 — 100세 건강, 무농약 농산물</div>
+        <div class="article-desc">강원도 양양 설악산 자락 이천여 평의 농지에서 20년간 무농약 농사를 일궈온 박창규 총동문회 부회장. 풀과 함께 키우며 천적을 보존하는 고추 재배법으로 13가지 작물에 정부 무농약 인증을 취득한 경험담을 담았다.</div>
+        <a class="article-link" href="https://www.khua.or.kr/bbs/board.php?bo_table=al_lecture&wr_id=352" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">모교 사랑</span>
+            <span class="article-date">2021.11.19 · 경희대학교</span>
+        </div>
+        <div class="article-title">"코로나19, 힘듦, 맞들어 이겨내자!" — 경희후원의 집 코로나19 특별장학금</div>
+        <div class="article-desc">한국난원 박창규 대표(정외 68학번)가 경희후원의 집 일원으로 약 2천 명의 학생에게 전달된 5억 원 규모 코로나19 특별장학금 전달식에 참여했다. 2013년부터 모교 후배를 위해 꾸준히 기부를 이어온 그의 행보를 소개한다.</div>
+        <a class="article-link" href="https://give.khu.ac.kr/bbs/board.php?bo_table=photos&wr_id=174" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">모교 사랑</span>
+            <span class="article-date">2021.11.10 · 중앙일보</span>
+        </div>
+        <div class="article-title">코로나19로 지친 학생들을 위로합니다</div>
+        <div class="article-desc">중앙일보가 조명한 경희대학교 경희후원의 집 이야기. 코로나19로 어려운 상황에서도 후배 학생들을 위해 기부를 멈추지 않은 지역 상인들의 따뜻한 연대를 담았으며, 한국난원 박창규 대표의 소감이 소개됐다.</div>
+        <a class="article-link" href="https://www.joongang.co.kr/article/25022602" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+
+    <div class="article-card">
+        <div class="article-meta">
+            <span class="article-tag">동문 활동</span>
+            <span class="article-date">2023.02.20 · 경희메아리</span>
+        </div>
+        <div class="article-title">경희메아리 2023년 신년 교례회</div>
+        <div class="article-desc">3년 만에 마스크를 벗고 70여 명이 모인 경희메아리 신년 교례회. 자문으로 활동 중인 박창규 대표가 한국난원의 난화분을 협찬품으로 제공해 참석자 전원에게 전달됐다.</div>
+        <a class="article-link" href="https://www.khua.or.kr/bbs/board.php?bo_table=al_meetingnews&wr_id=677" target="_blank" rel="noopener">원문 보기 →</a>
+    </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────── -->
+<footer class="footer">
+    <p>한국난원</p>
+    <p>서울 서초구 양재동화훼공판장 나동 112호</p>
+    <p style="margin-top:8px;">© 2026 박창규. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
